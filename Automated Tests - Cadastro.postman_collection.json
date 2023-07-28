@@ -1,0 +1,1407 @@
+{
+	"info": {
+		"_postman_id": "8dbf99a6-eb80-4aff-9f2f-05a9968850ea",
+		"name": "Automated Tests - Cadastro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28806666"
+	},
+	"item": [
+		{
+			"name": "1.1 Cadastro de Motorista cuja situação é aguardando análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \"mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{urlDevAnalistasCadastro}}",
+					"host": [
+						"{{urlDevAnalistasCadastro}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Cadastro de Motorista cuja situação deve ser diferente de aguardando análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \", mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao != 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.not.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "INTEGRA.REITERLOG",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "2Le2IvvE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/solicitacao_cadastro-grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"solicitacao_cadastro-grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Cadastro de Veículo cuja situação deve ser aguardando análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \"mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/solicitacao_cadastro-grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"solicitacao_cadastro-grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2  Cadastro de Veículo cuja situação deve ser diferente de aguardando análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \", mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao != 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.not.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/solicitacao_cadastro-grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"solicitacao_cadastro-grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.1 Cadastro do Conjunto cuja situação deve ser aguardando análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \"mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "text"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/solicitacao_cadastro-grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"solicitacao_cadastro-grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3.2 Cadastro do Conjunto cuja situação deve ser aguardando análise Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"modo_pesquisa: \" + JSON.parse(pm.request.body).detalhes.modo_pesquisa + \r",
+							"    \"mdm_vinculo: \" + JSON.parse(pm.request.body).profissional.mdm_vinculo + \r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao != 3\", function () {\r",
+							"    \r",
+							"    var responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"    pm.expect(responseBody.retorno_plataforma.data.situacao).to.not.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"tipo_operacao\": \"{{tipo_operacao}}\",\r\n        \"num_analise\": \"{{num_analise}}\"\r\n    },\r\n    \"profissional\": {\r\n        \"documento\":\"{{documento}}\",\r\n        \"rg\":\"{{rg}}\",\r\n        \"mdm_orgao_rg\":{{mdm_orgao_rg}},\r\n        \"mdm_uf_rg\":{{mdm_uf_rg}},\r\n        \"data_emissao_rg\":\"{{data_emissao_rg}}\",\r\n        \"nome\":\"{{nome}}\",\r\n        \"nome_mae\":\"{{nome_mae}}\",\r\n        \"nome_pai\":\"{{nome_pai}}\",\r\n        \"data_nascimento\":\"{{data_nascimento}}\",\r\n        \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento}},\r\n        \"mdm_pais_nacionalidade\": {{mdm_pais_nacionalidade}},\r\n        \"mdm_genero\":{{mdm_genero}},\r\n        \"mdm_profissao\":{{mdm_profissao}},\r\n        \"mdm_vinculo\":{{mdm_vinculo}},\r\n        \"email\":\"{{email}}\",\r\n        \"telefone\": {\r\n            \"ddi\":\"{{ddi_profissinal}}\",\r\n            \"ddd\":\"{{ddd_profissinal}}\",\r\n            \"numero\":\"{{numero_profissional}}\"\r\n        },\r\n        \"endereco\": {\r\n            \"mdm_cidade\":{{mdm_cidade_endereço}},\r\n            \"cep\":\"{{cep_endereco}}\",\r\n            \"nome_bairro\":\"{{nome_bairro_endereco}}\",\r\n            \"nome_rua\":\"{{nome_rua_endereco}}\",\r\n            \"numero\":\"{{numero_endereco}}\",\r\n            \"complemento\":\"{{complemento_endereco}}\",\r\n            \"foto_comprovante\":\"{{foto_comprovante}}\"\r\n        },\r\n        \"contatos\": [\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos1}},\r\n                \"nome_contato\":\"{{nome_contato_contatos1}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato1}}\",\r\n                    \"ddd\":\"{{ddd_contato1}}\",\r\n                    \"numero\":\"{{numero_contato1}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos2}},\r\n                \"nome_contato\":\"{{nome_contato_contatos2}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato2}}\",\r\n                    \"ddd\":\"{{ddd_contato2}}\",\r\n                    \"numero\":\"{{numero_contato2}}\"\r\n                }\r\n            },\r\n            {\r\n                \"mdm_tipo_contato\":{{mdm_tipo_contato_contatos3}},\r\n                \"nome_contato\":\"{{nome_contato_contatos3}}\",\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_contato3}}\",\r\n                    \"ddd\":\"{{ddd_contato3}}\",\r\n                    \"numero\":\"{{numero_contato3}}\"\r\n                }\r\n            }\r\n        ],\r\n        \"cnh\": {\r\n            \"numero_registro\":{{numero_registro}},\r\n            \"emissor\":\"{{emissor}}\",\r\n            \"categoria\":\"{{categoria}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_cnh}},\r\n            \"data_validade\":\"{{data_validade}}\",\r\n            \"data_emissao\":\"{{data_emissao}}\",\r\n            \"data_primeira_emissao\":\"{{data_primeira_emissao}}\",\r\n            \"numero_espelho\":{{numero_espelho}},\r\n            \"codigo_seguranca\":{{codigo_seguranca}},\r\n            \"renach\":{{renach}},\r\n            \"observacoes\":\"{{observacoes}}\",\r\n            \"foto_documento\":\"{{foto_documento}}\"\r\n        },\r\n        \"mopp\": {\r\n            \"numero\":\"{{numero_mopp}}\",\r\n            \"data_inicio\":\"{{data_inicio}}\",\r\n            \"data_vencimento\":\"{{data_vencimento}}\",\r\n            \"entidade_emissora\":{{entidade_emissora}}\r\n        }\r\n    },\r\n    \"veiculos\": [\r\n        {\r\n            \"placa\":\"{{placa}}\",\r\n            \"numero_chassi\":\"{{numero_chassi}}\",\r\n            \"mdm_cidade\":{{mdm_cidade_veiculo}},\r\n            \"mdm_tipo_veiculo\":{{mdm_tipo_veiculo}},\r\n            \"mdm_tipo_carroceria\":{{mdm_tipo_carroceria}},\r\n            \"fabricante_veiculo\":\"{{fabricante_veiculo}}\",\r\n            \"modelo_veiculo\":\"{{modelo_veiculo}}\",\r\n            \"mdm_tipo_combustivel\":{{mdm_tipo_combustivel}},\r\n            \"mdm_cor\":{{mdm_cor}},\r\n            \"ano_fabricacao\":{{ano_fabricacao}},\r\n            \"ano_modelo\":{{ano_modelo}},\r\n            \"numero_renavan\":\"{{numero_renavan}}\",\r\n            \"rntrc_numero\":\"{{rntrc_numero}}\",\r\n            \"mdm_vinculo\":{{mdm_vinculo_veiculo}},\r\n            \"crlv_imagem\":\"{{crlv_imagem}}\",\r\n            \"rastreador\": [\r\n                {\r\n                    \"mdm_empresa_rastreador\":{{mdm_empresa_rastreador}},\r\n                    \"nome_rastreador\":\"{{nome_rastreador}}\",\r\n                    \"numero_rastreador\":\"{{numero_rastreador}}\"\r\n                }\r\n            ],\r\n            \"proprietario\": {\r\n                \"mdm_tipo_documento\":{{mdm_tipo_documento}},\r\n                \"documento\":\"{{documento_proprietario}}\",\r\n                \"nome_razao_social\":\"{{nome_razao_social}}\",\r\n                \"endereco\": {\r\n                    \"mdm_cidade\":{{mdm_cidade_proprietario}},\r\n                    \"cep\":\"{{cep_proprietario}}\",\r\n                    \"nome_bairro\":\"{{nome_bairro_proprietario}}\",\r\n                    \"nome_rua\":\"{{nome_rua_proprietario}}\",\r\n                    \"numero\":\"{{numero_proprietario}}\",\r\n                    \"complemento\":\"{{complemento_proprietario}}\"\r\n                },\r\n                \"telefone\": {\r\n                    \"ddi\":\"{{ddi_proprietario}}\",\r\n                    \"ddd\":\"{{ddd_proprietario}}\",\r\n                    \"numero\":\"{{numero_telefone}}\"\r\n                },\r\n                \"PF\": {\r\n                    \"numero_rg\":\"{{numero_rg}}\",\r\n                    \"mdm_uf_rg\":{{mdm_uf_rg_pf}},\r\n                    \"nome_mae\":\"{{nome_mae_pf}}\",\r\n                    \"nome_pai\":\"{{nome_pai_pf}}\",\r\n                    \"mdm_cidade_nascimento\":{{mdm_cidade_nascimento_pf}},\r\n                    \"data_nascimento\":\"{{data_nascimento_pf}}\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"viagem\": {\r\n        \"documento_embarcador\":\"{{documento_embarcador}}\",\r\n        \"documento_transportador\":\"{{documento_transportador}}\",\r\n        \"carga_tipo\":\"{{carga_tipo}}\",\r\n        \"carga_valor\":\"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\":{{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\":{{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_1}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_1}}\"\r\n        },\r\n        {\r\n            \"nome_campo\":\"{{nome_campo_adicionais_2}}\",\r\n            \"valor_campo\":\"{{valor_campo_adicionais_2}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/solicitacao_cadastro-grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"solicitacao_cadastro-grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.1 Consulta de Obj não Cadastrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao = 1\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(1);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\":\"{{nome_campo}}\",\r\n            \"valor_campo\":\"{{valor_campo}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.2 Consulta de Obj com Cadastro Inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao = 2\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(2);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo}}\",\r\n            \"valor_campo\": \"{{valor_campo}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.3 Consulta de Obj Aguardando Análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 3\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(3);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo}}\",\r\n            \"valor_campo\": \"{{valor_campo}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.4 Consulta de Obj Não Recomendado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 4\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(4);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo}}\",\r\n            \"valor_campo\": \"{{valor_campo}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.5 Consulta de Obj Recomendado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 5\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(5);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo}}\",\r\n            \"valor_campo\": \"{{valor_campo}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.1 Consulta de Conjunto não Cadastrado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao = 1\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(1);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo_adicionais}}\",\r\n            \"valor_campo\": \"{{valor_campo_adicionais}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.2 Consulta de Conjunto com Cadastro Inválido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 2 e retorno_plataforma.data.situacao = 2\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(2);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(2);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo_adicionais}}\",\r\n            \"valor_campo\": \"{{valor_campo_adicionais}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.3 Consulta de Conjunto Aguardando Análise",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 3\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(3);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo_adicionais}}\",\r\n            \"valor_campo\": \"{{valor_campo_adicionais}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.4 Consulta de Conjunto não Recomendado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 4\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(4);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo_adicionais}}\",\r\n            \"valor_campo\": \"{{valor_campo_adicionais}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.5 Consulta de Conjunto Recomendado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\r",
+							"    \"profissional_cpf: \" + JSON.parse(pm.request.body).detalhes.profissional_cpf +\r",
+							"    \"veiculo_placa: \" + JSON.parse(pm.request.body).detalhes.veiculo_placa +\r",
+							"    \" -> retorno_plataforma.codigo = 1 e retorno_plataforma.data.situacao = 5\", function () {\r",
+							"\r",
+							"        var responseBody = pm.response.json();\r",
+							"        pm.expect(responseBody.retorno_plataforma.codigo).to.eql(1);\r",
+							"        pm.expect(responseBody.retorno_plataforma.data.situacao).to.eql(5);\r",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "solicitante_id",
+						"value": "andressa-teste",
+						"type": "default"
+					},
+					{
+						"key": "solicitante_token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InJnMEp1MERHOFdyNWU2dEs4YWtJdG1yNzhILTdlcUI0bU44NUExT095MXcifQ.eyJleHAiOjE2OTQwNTAxOTQsImlhdCI6MTY3NDA0OTg5NCwianRpIjoiNTljN2I4ZmMtMGZkYy00ZGI5LWJlNDItNTZhZWQ5ZGYxYTY2IiwiaXNzIjoiaHR0cHM6Ly9odWIubnN0ZWNoLmNvbS5ici9hdXRoL3JlYWxtcy9wbGF0Zm9ybSIsImF1ZCI6ImFwaXBhc3MiLCJzdWIiOiJjMmFlN2VmNS1jMTAyLTRkYjctYTg2ZC05YjRmMDQyZTgzYWUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhbmRyZXNzYS10ZXN0ZSIsImFjciI6IjEiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYXBpcGFzcyI6eyJyb2xlcyI6WyJ0b2xsLXBheW1lbnQtcmVxdWVzdCIsImV2ZW50cy1yZXF1ZXN0IiwidHJhY2tpbmctcmVxdWVzdCIsImNpb3QtcmVxdWVzdCIsInByb2R1Y3QtcXVvdGF0aW9uLXJlcXVlc3QiLCJmcmVpZ2h0LW9mZmVyLXJlcXVlc3QiLCJ0cmF2ZWwtc3VibWlzc2lvbi1yZXF1ZXN0IiwibW9uaXRvcmluZy1yZXF1ZXN0IiwiZW5kb3JzZS1yZXF1ZXN0IiwicmVzZWFyY2gtcmVxdWVzdCIsImRvY3MtcmVxdWVzdCIsInZlaGljbGUtY2hlY2tsaXN0LXJlcXVlc3QiXX19LCJzY29wZSI6IiIsImNsaWVudElkIjoiYW5kcmVzc2EtdGVzdGUiLCJjbGllbnRIb3N0IjoiMTcyLjE3LjguNCIsImNsaWVudEFkZHJlc3MiOiIxNzIuMTcuOC40In0.HgPO_gYL9khLgcTCzc5TToDbBQgd3lp7S9zAu-rwbTXxyoiynnwxKmmq27IGzWERhYeFHkh8h1T_uWnejcE24SMaHhv3_BgivWb84adNE6ZuXSXm0Ps92VrpNkgxVHk2NexvsiLAfrZPZTI7EefRfeptKAM3S4x8YKdusaZ3E8WLYek8LGRe5S_hOTxU6euUTxoumQSo6mAKQfHPwHkzx8xPYwC4V01AkrDWaZjz7fpxRGzitT4u22_4GWLlJmydR2XUhM8Y6iybVEowLrXwB_C5bBcZWreQfpuNtbUMFhjlUQEYcLEdrTbfyimm5yYxmqEw-idqvf3vD94UDNArrw",
+						"type": "default"
+					},
+					{
+						"key": "usuario",
+						"value": "francino.melo@nstech.com.br",
+						"type": "text"
+					},
+					{
+						"key": "senha",
+						"value": "0u6Q6MVM52xTTbMQsN3CBLLyzsVgVG60T3T3MoB5",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"identificacao\": {\r\n        \"fornecedor_id\": {{fornecedor_id}},\r\n        \"cliente_cnpj\": \"{{cliente_cnpj}}\",\r\n        \"cliente_id\": \"{{cliente_id}}\",\r\n        \"cliente_grupo_cnpj_custo\": \"{{cliente_grupo_cnpj_custo}}\"\r\n    },\r\n    \"detalhes\": {\r\n        \"modo_pesquisa\": \"{{modo_pesquisa}}\",\r\n        \"num_analise\": \"{{num_analise}}\",\r\n        \"profissional_cpf\": \"{{profissional_cpf}}\",\r\n        \"veiculo_placa\": \"{{veiculo_placa}}\",\r\n        \"veiculo_placa1\": \"{{veiculo_placa1}}\",\r\n        \"veiculo_placa2\": \"{{veiculo_placa2}}\",\r\n        \"veiculo_placa3\": \"{{veiculo_placa3}}\",\r\n        \"profissional_mdm_vinculo\": {{profissional_mdm_vinculo}},\r\n        \"documento_transportador\": \"{{documento_transportador}}\",\r\n        \"carga_tipo\": \"{{carga_tipo}}\",\r\n        \"carga_valor\": \"{{carga_valor}}\",\r\n        \"mdm_cidade_origem\": {{mdm_cidade_origem}},\r\n        \"mdm_cidade_destino\": {{mdm_cidade_destino}}\r\n    },\r\n    \"adicionais\": [\r\n        {\r\n            \"nome_campo\": \"{{nome_campo_adicionais}}\",\r\n            \"valor_campo\": \"{{valor_campo_adicionais}}\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://core.apipass.com.br/api/da228c56-6c11-4b5a-8c8d-90f37008263b/d004130b-6146-4371-ba45-b766b798ef27/dev_analistas/consulta_status_grs",
+					"protocol": "https",
+					"host": [
+						"core",
+						"apipass",
+						"com",
+						"br"
+					],
+					"path": [
+						"api",
+						"da228c56-6c11-4b5a-8c8d-90f37008263b",
+						"d004130b-6146-4371-ba45-b766b798ef27",
+						"dev_analistas",
+						"consulta_status_grs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
