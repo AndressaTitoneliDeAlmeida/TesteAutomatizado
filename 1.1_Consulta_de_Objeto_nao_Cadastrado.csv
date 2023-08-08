@@ -1,0 +1,5 @@
+fornecedor_id,cliente_cnpj,cliente_id,cliente_grupo_cnpj_custo,modo_pesquisa,num_analise,profissional_cpf,veiculo_placa,veiculo_placa1,veiculo_placa2,veiculo_placa3,profissional_mdm_vinculo,documento_transportador,carga_tipo,carga_valor,mdm_cidade_origem,mdm_cidade_destino,nome_campo,valor_campo
+102,34242875000111,1091,,,,53928660419,,,,,0,34242875000111,SOJA,180000.00,3548500,2101400,,
+102,34242875000111,1091,,,,53928660420,,,,,0,34242875000111,MILHO,270000.00,3304557,3548500,,
+102,34242875000111,1091,,,,,,,,,0,34242875000111,AÇO,330000.00,3509502,2304400,,
+102,34242875000111,1091,,,,,CB@9678,,,,0,34242875000111,AÇUCAR,110000.00,2408102,3537602,,
