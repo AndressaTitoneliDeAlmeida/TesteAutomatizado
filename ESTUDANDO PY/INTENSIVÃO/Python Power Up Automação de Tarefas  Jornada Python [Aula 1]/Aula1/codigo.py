@@ -9,7 +9,7 @@ import time
 # pyautogui.press -> apertar 1 tecla
 # pyautogui.click -> clicar em algum lugar da tela
 # pyautogui.hotkey -> combinação de teclas
-pyautogui.PAUSE = 0.2
+pyautogui.PAUSE = 0.3
 
 # abrir o navegador (chrome)
 pyautogui.press("win")
@@ -19,7 +19,7 @@ pyautogui.press("enter")
 # entrar no link 
 pyautogui.write("https://dlp.hashtagtreinamentos.com/python/intensivao/login")
 pyautogui.press("enter")
-time.sleep(2)
+time.sleep(3)
 
 
 # Passo 2: Fazer login
@@ -31,7 +31,7 @@ pyautogui.press("tab") # passando pro próximo campo
 pyautogui.write("mudar321")
 pyautogui.click(x=648, y=687) # clique no botao de login
 pyautogui.press("enter")
-time.sleep(2)
+time.sleep(3)
 
 # Passo 3: Importar a base de produtos pra cadastrar
 import pandas as pd
